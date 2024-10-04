@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daniel4.dev - bald verfügbar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a1a;
+            color: #eaeaea;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #66fcf1;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #eaeaea;
+        }
+        #countdown {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 30px 0;
+            color: #c5c6c7;
+        }
+        .social-links {
+            margin-top: 30px;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #66fcf1;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #45a29e;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>daniel4.dev</h1>
+        <h2>Wir sind bald für Sie da!</h2>
+        <p>Wir arbeiten daran, Ihnen ein einzigartiges Erlebnis zu bieten. Bleiben Sie dran!</p>
+        <div id="countdown" aria-live="polite">
+            <div id="days"></div>
+            <div id="hours"></div>
+            <div id="minutes"></div>
+            <div id="seconds"></div>
+        </div>
+        <p>Folgen Sie für die neuesten Updates:</p>
+        <nav class="social-links">
+            <a href="https://linkedin.com/in/daniel-maresch-dev" target="_blank">LinkedIn</a>
+            <a href="https://github.com/D4niel400" target="_blank">GitHub</a>
+            <a href="https://www.instagram.com/dnl.mrsh/" target="_blank">Instagram</a>
+        </nav>
+    </main>
+
+    <script>
+        // Countdown-Timer
+        const countDownDate = new Date("Jan 1, 2025 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days + "d ";
+            document.getElementById("hours").innerHTML = hours + "h ";
+            document.getElementById("minutes").innerHTML = minutes + "m ";
+            document.getElementById("seconds").innerHTML = seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "Wir sind live!";
+            }
+        }
+
+        updateCountdown();
+        const x = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
